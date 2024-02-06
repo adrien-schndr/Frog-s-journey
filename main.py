@@ -54,18 +54,16 @@ joueur = Frog()
 liste_obstacles = []
 train = Obstacle(0, 100, 800, 100, "train", 10)
 pink_car = Obstacle(0, 200, 200, 100, "pink_car", 5)
+red_car = Obstacle(0, 300, 200, 100, "blue_car", 15)
 liste_obstacles.append(train)
 liste_obstacles.append(pink_car)
+liste_obstacles.append(red_car)
 
 
 # Chargement du background
 background_png = pygame.image.load("images/background.png").convert_alpha()
 scroll = 0
 tiles = math.ceil(1080 / background_png.get_height()) + 1
-
-
-def collision(objet1, objet2) -> bool:
-    return objet1.rect.colliderect(objet2.rect)
 
 
 running = True
