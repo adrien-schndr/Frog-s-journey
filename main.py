@@ -14,19 +14,19 @@ class Frog(pygame.sprite.Sprite):
         self.image.blit(skin_frog, (self.rect.x, self.rect.y))
         self.rect.x = 910
 
-    def deplacer_joueur(self):
-        vitesse = 10
-        touches_clavier = pygame.key.get_pressed()
-        if touches_clavier[pygame.K_LEFT]:
+    def move(self, event):
+        vitesse = 100
+
+        if event.type == KEYDOWN and event.key == K_LEFT:
             if 0 <= self.rect.x - vitesse <= 1920 - 100:
                 self.rect.x -= vitesse
-        if touches_clavier[pygame.K_RIGHT]:
+        if event.type == KEYDOWN and event.key == K_RIGHT:
             if 0 <= self.rect.x + vitesse <= 1920 - 100:
                 self.rect.x += vitesse
-        if touches_clavier[pygame.K_UP]:
+        if event.type == KEYDOWN and event.key == K_UP:
             if 0 <= self.rect.y - vitesse <= 1080 - 100:
                 self.rect.y -= vitesse
-        if touches_clavier[pygame.K_DOWN]:
+        if event.type == KEYDOWN and event.key == K_DOWN:
             if 0 <= self.rect.y + vitesse <= 1080 - 100:
                 self.rect.y += vitesse
 
@@ -44,20 +44,30 @@ class Obstacle(pygame.sprite.Sprite):
         self.dimensions = (length, height)
         self.speed = speed
 
+    def move(self):
+        self.rect.x += self.speed
+        if self.rect.x >= 1920:
+            self.rect.x = -self.dimensions[0]
+        return
+
 
 pygame.init()
 screen = pygame.display.set_mode((1920, 1080), pygame.SCALED | pygame.FULLSCREEN)
 clock = pygame.time.Clock()
 
-joueur = Frog()
+player = Frog()
 
-liste_obstacles = []
-train = Obstacle(0, 100, 800, 100, "train", 10)
-pink_car = Obstacle(0, 200, 200, 100, "pink_car", 5)
-red_car = Obstacle(0, 300, 200, 100, "blue_car", 15)
-liste_obstacles.append(train)
-liste_obstacles.append(pink_car)
-liste_obstacles.append(red_car)
+grille_lvl_1 = [
+    [Obstacle(0, 100, 800, 100, "train", 10)],
+    [Obstacle(0, 200, 200, 100, "yellow_car", 5)],
+    [Obstacle(0, 300, 200, 100, "blue_car", 15), Obstacle(500, 300, 200, 100, "blue_car", 15), Obstacle(800, 300, 200, 100, "blue_car", 15)],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+]
 
 
 # Chargement du background
@@ -69,35 +79,35 @@ tiles = math.ceil(1080 / background_png.get_height()) + 1
 running = True
 while running:
     # Rafraichissement fen^tre
-    joueur.deplacer_joueur()
-    pygame.sprite.Group(joueur).draw(screen)
-    pygame.sprite.Group(liste_obstacles).draw(screen)
+    screen.blit(background_png, (0, 0))
+    pygame.sprite.Group(player).draw(screen)
+    pygame.sprite.Group(ligne_obstacle for ligne_obstacle in grille_lvl_1).draw(screen)
     pygame.display.flip()
     clock.tick(60)
 
-    if pygame.sprite.spritecollide(joueur, liste_obstacles, False):
-        joueur.rect.x, joueur.rect.y = 910, 0
+    for ligne_obstacle in grille_lvl_1:
+        pygame.sprite.Group(ligne_obstacle).draw(screen)
 
-    for obstacle in liste_obstacles:
-        obstacle.rect.x += obstacle.speed
-        if obstacle.rect.x >= 1920:
-            obstacle.rect.x = -obstacle.dimensions[0]
+        if pygame.sprite.spritecollide(player, ligne_obstacle, False):
+            player.rect.x, player.rect.y = 910, 0
 
-    # Déplacement background
-    i = 0
-    while i < tiles:
-        screen.blit(background_png, (0, background_png.get_height() * i + scroll))
-        i += 1
-    scroll -= 0.75
-    if abs(scroll) > background_png.get_height():
-        scroll = 0
+        for obstacle in ligne_obstacle:
+            obstacle.move()
 
     # Quitter le jeu
     for event in pygame.event.get():
-        if event.type == KEYDOWN and event.key == K_ESCAPE:
+        player.move(event)
+        if (event.type == KEYDOWN and event.key == K_ESCAPE) or event.type == pygame.QUIT:
             pygame.quit()
-            running = False
-        if event.type == pygame.QUIT:
             running = False
 
 pygame.quit()
+
+# # Déplacement background
+# i = 0
+# while i < tiles:
+#     screen.blit(background_png, (0, background_png.get_height() * i + scroll))
+#     i += 1
+# scroll -= 0.75
+# if abs(scroll) > background_png.get_height():
+#     scroll = 0
