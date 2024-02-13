@@ -1,9 +1,16 @@
-import pygame
-from pygame.locals import *
-pygame.init()
+import pygame.freetype
+from constantes import *
 
-#Constantes
-menu = "images/menu_background.png"
+pygame.init()
+pygame.font.init()
+
+
+GAME_FONT = pygame.freetype.Font("story_font.otf", 32)
+TITLE_FONT = pygame.freetype.Font("story_font.otf", 48)
+
+
+# Constantes
+menu = "images/story_screen.png"
 
 
 def creation_fenetre():
@@ -11,8 +18,15 @@ def creation_fenetre():
     global fenetre
     fenetre = pygame.display.set_mode((1920, 1080), pygame.SCALED | pygame.FULLSCREEN)
     menu_background = pygame.image.load(menu).convert()
-    menu_background = pygame.transform.scale(menu, (1920, 1080))
-    fenetre.blit(menu_background, (0,0))
+    menu_background = pygame.transform.scale(menu_background, (1920, 1080))
+    fenetre.blit(menu_background, (0, 0))
+    pygame.display.flip()
+    title_surface, rect = GAME_FONT.render("""LAYTON""", (0, 0, 0))
+    text_surface, rect = GAME_FONT.render("""Ah voyageur intrépide, *ribbit* bienvenue dans ces contrées sylvestres. Je suis Layton, """, (0, 0, 0))
+    text_surface2, rect = GAME_FONT.render("""Chef de la Guilde, gardien de ces marais ancestraux.""", (0, 0, 0))
+    screen.blit(title_surface, (125, 675))
+    screen.blit(text_surface, (150, 725))
+    screen.blit(text_surface2, (150, 775))
     pygame.display.flip()
 
     running = True  # Variable pour contrôler la boucle principale
@@ -25,13 +39,8 @@ def creation_fenetre():
             if event.type == MOUSEBUTTONDOWN and event.button == 1:  # Vérifier le clic de souris
                 # Récupérer les coordonnées du clic
                 clic_x, clic_y = event.pos
-                print(clic_x, clic_y)
-                if 735<clic_x<1241 and 517<clic_y<773:
+                if 1349 < clic_x < 1407 and 854 < clic_y < 959:
                     running = False
-                    # import ...
-                if 682<clic_x<1292 and 806<clic_y<1028:
-                    running = False
-                    # import ...
 
 
 creation_fenetre()
