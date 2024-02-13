@@ -1,4 +1,5 @@
 import pygame.freetype
+from pygame.locals import *
 from constantes import *
 
 pygame.init()

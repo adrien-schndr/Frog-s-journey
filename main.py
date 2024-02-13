@@ -1,4 +1,5 @@
 from constantes import *
+from pygame.locals import *
 
 
 class Frog(pygame.sprite.Sprite):
