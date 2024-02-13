@@ -1,7 +1,4 @@
-import math
-import pygame
-from pygame.locals import *
-from levels import *
+from constantes import *
 
 
 class Frog(pygame.sprite.Sprite):
@@ -19,63 +16,75 @@ class Frog(pygame.sprite.Sprite):
         vitesse = 100
 
         if event.type == KEYDOWN and event.key == K_LEFT:
-            if 0 <= self.rect.x - vitesse <= 1920 - 100:
+            if 0 <= self.rect.x - vitesse <= window_length - 100:
                 self.rect.x -= vitesse
         if event.type == KEYDOWN and event.key == K_RIGHT:
-            if 0 <= self.rect.x + vitesse <= 1920 - 100:
+            if 0 <= self.rect.x + vitesse <= window_length - 100:
                 self.rect.x += vitesse
         if event.type == KEYDOWN and event.key == K_UP:
-            if 0 <= self.rect.y - vitesse <= 1080 - 100:
+            if 0 <= self.rect.y - vitesse <= window_height - 100:
                 self.rect.y -= vitesse
         if event.type == KEYDOWN and event.key == K_DOWN:
-            if 0 <= self.rect.y + vitesse <= 1080 - 100:
+            if 0 <= self.rect.y + vitesse <= window_height - 100:
                 self.rect.y += vitesse
 
 
 class Obstacle(pygame.sprite.Sprite):
     def __init__(self, x, y, length, height, skin, speed):
         super().__init__()
-        skin_obstacle = pygame.image.load("images/" + skin + ".png").convert_alpha()
-        skin_obstacle = pygame.transform.scale(skin_obstacle, (length, height))
         self.image = pygame.Surface((length, height), pygame.SRCALPHA)
-        self.rect = self.image.get_rect()
-        self.rect.center = (length/2, height/2)
-        self.image.blit(skin_obstacle, (0, 0))
-        self.rect.x, self.rect.y = x, y
-        self.dimensions = (length, height)
-        self.speed = speed
+        self.skin = skin
+        if type(self.skin) is str:  # Non animé
+            self.isAnimated = False
+            skin_obstacle = pygame.image.load("images/" + self.skin + ".png").convert_alpha()
+            skin_obstacle = pygame.transform.scale(skin_obstacle, (length, height))
+            self.image.blit(skin_obstacle, (0, 0))
+            self.rect = self.image.get_rect()
+            self.rect.center = (length/2, height/2)
+            self.rect.x, self.rect.y = x, y
+            self.dimensions = (length, height)
+            self.speed = speed
+        if type(self.skin) is list:
+            self.index = 0
+            self.isAnimated = True
+            self.images = []
+            for image in skin:
+                self.images.append(image)
+            self.index = 0
+            self.image = self.images[self.index]
+            self.rect = self.image.get_rect()
+            self.rect.center = (length/2, height/2)
+            self.rect.x, self.rect.y = x, y
+            self.dimensions = (length, height)
+            self.speed = speed
 
-    def move(self):
+    def update(self):
         self.rect.x += self.speed
-        if self.rect.x >= 1920:
+        if self.rect.x >= window_length:
             self.rect.x = -self.dimensions[0]
+        if self.isAnimated:
+            self.index += 1
+
+            if self.index >= len(self.skin):
+                self.index = 0
+
+            self.image = self.skin[self.index]
+
         return
 
 
 pygame.init()
-screen = pygame.display.set_mode((1920, 1080), pygame.SCALED | pygame.FULLSCREEN)
 clock = pygame.time.Clock()
 
 player = Frog()
 
-grille_lvl_1 = [
-    [Obstacle(0, 100, 800, 100, "train", 10)],
-    [Obstacle(0, 200, 200, 100, "yellow_car", 5)],
-    [Obstacle(0, 300, 200, 100, "blue_car", 15), Obstacle(500, 300, 200, 100, "blue_car", 15), Obstacle(800, 300, 200, 100, "blue_car", 15)],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
-]
-
+rondin_bois = Obstacle(0, 200, 200, 100, wooden_log_textures, 10)
+obsctacle_group = pygame.sprite.Group(rondin_bois)
 
 
 # Chargement du background
 background_png = pygame.image.load("images/background.png").convert_alpha()
 scroll = 0
-tiles = math.ceil(1080 / background_png.get_height()) + 1
 
 
 running = True
@@ -83,18 +92,15 @@ while running:
     # Rafraichissement fen^tre
     screen.blit(background_png, (0, 0))
     pygame.sprite.Group(player).draw(screen)
-    pygame.sprite.Group(ligne_obstacle for ligne_obstacle in grille_lvl_1).draw(screen)
-    pygame.display.flip()
+    obsctacle_group.draw(screen)
+    pygame.display.update()
     clock.tick(60)
+    obsctacle_group.update()
 
-    for ligne_obstacle in grille_lvl_1:
-        pygame.sprite.Group(ligne_obstacle).draw(screen)
 
-        if pygame.sprite.spritecollide(player, ligne_obstacle, False):
-            player.rect.x, player.rect.y = 910, 0
+    if pygame.sprite.spritecollide(player, obsctacle_group, False):
+        player.rect.x, player.rect.y = 910, 0
 
-        for obstacle in ligne_obstacle:
-            obstacle.move()
 
     # Quitter le jeu
     for event in pygame.event.get():
@@ -104,12 +110,3 @@ while running:
             running = False
 
 pygame.quit()
-
-# # Déplacement background
-# i = 0
-# while i < tiles:
-#     screen.blit(background_png, (0, background_png.get_height() * i + scroll))
-#     i += 1
-# scroll -= 0.75
-# if abs(scroll) > background_png.get_height():
-#     scroll = 0
