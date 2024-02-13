@@ -3,7 +3,7 @@ from pygame.locals import *
 import pygame.freetype
 
 
-last_unlocked_lvl = 6
+last_unlocked_lvl = 1
 
 # Fenêtre
 window_length = 1920

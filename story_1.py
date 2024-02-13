@@ -37,16 +37,6 @@ def creation_fenetre():
     running = True  # Variable pour contrôler la boucle principale
     while running:
         screen.blit(menu_background, (0, 0))
-        for event in pygame.event.get():
-            if (event.type == KEYDOWN and event.key == K_ESCAPE) or event.type == pygame.QUIT:
-                pygame.quit()
-                running = False  # Quitter la boucle principale si l'utilisateur ferme la fenêtre
-            if event.type == MOUSEBUTTONDOWN and event.button == 1:  # Vérifier le clic de souris
-                # Récupérer les coordonnées du clic
-                clic_x, clic_y = event.pos
-                if 1349 < clic_x < 1407 and 854 < clic_y < 959:
-                    running = False
-                    import main
         clock.tick(20)
         title_surface, rect = TITLE_FONT.render(title, (0, 0, 0))
         screen.blit(title_surface, (125, 665))
@@ -64,7 +54,17 @@ def creation_fenetre():
             screen.blit(text_surface1, (150, 775))
             longueur += 1
         pygame.display.flip()
+        for event in pygame.event.get():
+            if (event.type == KEYDOWN and event.key == K_ESCAPE) or event.type == pygame.QUIT:
+                running = False  # Quitter la boucle principale si l'utilisateur ferme la fenêtre
+                pygame.quit()
+            if event.type == MOUSEBUTTONDOWN and event.button == 1:  # Vérifier le clic de souris
+                # Récupérer les coordonnées du clic
+                clic_x, clic_y = event.pos
+                if 1349 < clic_x < 1407 and 854 < clic_y < 959:
+                    running = False
+                    import select_lvl
+    pygame.quit()
 
 
 creation_fenetre()
-pygame.quit()

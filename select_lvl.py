@@ -3,26 +3,24 @@ pygame.init()
 
 # Constantes
 menu = "images/level_selection_bg.png"
-lock_positions = [(227, 866), (546, 743), (716, 500), (1099, 449), (1090, 287), (1453, 173), (1243, 27), (812, 27), (477, 77), (171, 175)]
+lock_positions = [(582, 805), (582, 801), (747, 563), (1123, 511), (1122, 360), (1485, 243), (1296, 97), (856, 97), (525, 137), (221, 248)]
 
 
 def creation_fenetre():
-    """ création d'une fenêtre de taille largeur x hauteur"""
-    global fenetre
-    fenetre = pygame.display.set_mode((1920, 1080), pygame.SCALED | pygame.FULLSCREEN)
     menu_background = pygame.image.load(menu).convert()
     menu_background = pygame.transform.scale(menu_background, (1920, 1080))
-    fenetre.blit(menu_background, (0, 0))
+    screen.blit(menu_background, (0, 0))
 
     lock_texture = pygame.image.load("images/lock.png").convert_alpha()
+    lock_texture = pygame.transform.scale(lock_texture, (25, 40))
     for niveau in range(last_unlocked_lvl, len(lock_positions)):
-        fenetre.blit(lock_texture, lock_positions[niveau])
+        screen.blit(lock_texture, lock_positions[niveau])
 
     pygame.display.flip()
 
     running = True  # Variable pour contrôler la boucle principale
     while running:
-        fenetre.blit(menu_background, (0, 0))
+        screen.blit(menu_background, (0, 0))
         for event in pygame.event.get():
             if (event.type == KEYDOWN and event.key == K_ESCAPE) or event.type == pygame.QUIT:
                 pygame.quit()

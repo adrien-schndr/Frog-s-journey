@@ -23,9 +23,11 @@ def creation_fenetre():
                 if 735 < clic_x < 1241 and 517 < clic_y < 773:
                     last_unlocked_lvl = -1
                     import select_lvl
+                    running = False
                 if 682 < clic_x < 1292 and 806 < clic_y < 1028:
+                    last_unlocked_lvl = 0
                     import story_1
-                running = False
+                    running = False
 
 
 creation_fenetre()
