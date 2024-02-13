@@ -1,6 +1,7 @@
 import math
 import pygame
 from pygame.locals import *
+from levels import *
 
 
 class Frog(pygame.sprite.Sprite):
@@ -68,6 +69,7 @@ grille_lvl_1 = [
     [],
     []
 ]
+
 
 
 # Chargement du background
