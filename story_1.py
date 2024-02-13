@@ -1,5 +1,3 @@
-import pygame.freetype
-from pygame.locals import *
 from constantes import *
 
 pygame.init()
@@ -27,12 +25,9 @@ menu = "images/story_screen.png"
 
 
 def creation_fenetre():
-    """ création d'une fenêtre de taille largeur x hauteur"""
-    global fenetre
-    fenetre = pygame.display.set_mode((1920, 1080), pygame.SCALED | pygame.FULLSCREEN)
     menu_background = pygame.image.load(menu).convert()
     menu_background = pygame.transform.scale(menu_background, (1920, 1080))
-    fenetre.blit(menu_background, (0, 0))
+    screen.blit(menu_background, (0, 0))
     pygame.display.flip()
 
     pygame.display.flip()
@@ -41,7 +36,7 @@ def creation_fenetre():
 
     running = True  # Variable pour contrôler la boucle principale
     while running:
-        fenetre.blit(menu_background, (0, 0))
+        screen.blit(menu_background, (0, 0))
         for event in pygame.event.get():
             if (event.type == KEYDOWN and event.key == K_ESCAPE) or event.type == pygame.QUIT:
                 pygame.quit()
@@ -51,8 +46,8 @@ def creation_fenetre():
                 clic_x, clic_y = event.pos
                 if 1349 < clic_x < 1407 and 854 < clic_y < 959:
                     running = False
-        #              import select_menu
-        clock.tick(30)
+                    import main
+        clock.tick(20)
         title_surface, rect = TITLE_FONT.render(title, (0, 0, 0))
         screen.blit(title_surface, (125, 665))
         if text_number == 0:
