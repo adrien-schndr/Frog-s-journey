@@ -97,10 +97,8 @@ while running:
     clock.tick(60)
     obsctacle_group.update()
 
-
     if pygame.sprite.spritecollide(player, obsctacle_group, False):
         player.rect.x, player.rect.y = 910, 0
-
 
     # Quitter le jeu
     for event in pygame.event.get():
