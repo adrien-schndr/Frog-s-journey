@@ -62,7 +62,7 @@ def creation_fenetre():
                 clic_x, clic_y = event.pos
                 if 1349 < clic_x < 1407 and 854 < clic_y < 959:
                     running = False
-                    import select_lvl
+                    import story_2
     pygame.quit()
 
 
