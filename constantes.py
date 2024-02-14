@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 import pygame.freetype
 
+pygame.init()
 
 last_unlocked_lvl = 1
 
@@ -24,7 +25,7 @@ menu_background = "images/menu_background.png"
 class Frog(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        skin_frog = pygame.image.load("images/green_frog.png").convert_alpha()
+        skin_frog = pygame.image.load("images/skin_menu/frogs/frog26.png").convert_alpha()
         skin_frog = pygame.transform.scale(skin_frog, (100, 100))
         self.image = pygame.Surface((100, 100), pygame.SRCALPHA)
         self.rect = self.image.get_rect()

@@ -29,6 +29,9 @@ def creation_fenetre():
                 # Récupérer les coordonnées du clic
                 clic_x, clic_y = event.pos
                 print(clic_x, clic_y)
+                if 207 < clic_x < 305 and 853 < clic_y < 988:
+                    import level_1
+                    running = False
 
 
 creation_fenetre()
