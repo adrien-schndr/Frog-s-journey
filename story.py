@@ -24,3 +24,22 @@ Soyez rapide, mais ne négligez pas la prudence."
 
 LAYTON : "Une fois que vous aurez atteint l'épée, votre aventure ne fera que commencer. Mais pour cela, vous devez 
 d'abord surmonter ce premier défi avec succès. Allez, brave voyageur, que la chance soit avec vous."""
+
+
+### STORY 3 --> fin premier niveau
+"""
+LAYTON: "Bravo, voyageur ! Vous avez franchi avec succès les épreuves de ce premier niveau. Votre agilité et votre 
+détermination sont remarquables ribbit. Continuez ainsi sur cette voie, et vous accomplirez des exploits encore plus grands."
+
+LAYTON: "Malheureusement, le devoir m'appelle. Je dois m'absenter pour ne pas être en retard à mon thé avec la 
+Reine des Nénuphars ribbit. Mais ne vous inquiétez pas, je serai toujours là pour vous guider à distance, 
+tel un phare dans l'obscurité."
+
+LAYTON: "Quant aux épées que vous cherchez, elles ne sont pas de simples armes ribbit. Elles renferment un pouvoir 
+ancestral, capable de déverrouiller les portes des dimensions oubliées et de protéger notre royaume contre les forces 
+du mal ribbit. Leur utilité dépasse de loin leur simple aspect de trésor. Elles sont les gardiennes de notre histoire 
+et de notre avenir."
+
+LAYTON: "Continuez votre quête avec courage et persévérance, voyageur ribbit. Puissent ces épées vous guider vers la 
+victoire et l'accomplissement de votre destinée ribbit."
+"""

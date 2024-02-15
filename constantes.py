@@ -68,6 +68,7 @@ class Obstacle(pygame.sprite.Sprite):
                 self.images.append(image)
             self.image = self.images[self.index]
         self.rect = self.image.get_rect()
+        self.init_position = (x, y)
         self.rect.center = (length/2, height/2)
         self.rect.x, self.rect.y = x, y
         self.dimensions = (length, height)
