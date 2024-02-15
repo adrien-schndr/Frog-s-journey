@@ -4,7 +4,7 @@ clock = pygame.time.Clock()
 
 menu_skin = "images/skin_menu/skin_background.png"
 taille_skin = 100
-frog_skin = ""
+frog_skin = "frog26"
 
 window_length = 1920
 window_height = 1080
@@ -50,7 +50,8 @@ def creation_fenetre():
                 running = False  # Quitter la boucle principale si l'utilisateur ferme la fenêtre
                 pygame.quit()
             if event.type == KEYDOWN and event.key == K_RETURN:  # Quitter la boucle principale si l'utilisateur ferme la fenêtre
-                import level_1
+                from level_1 import creation_fenetre as lvl_1
+                lvl_1(frog_skin, screen)
 
                 running = False  # Quitter la boucle principale si l'utilisateur ferme la fenêtre
                 pygame.quit()

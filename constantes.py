@@ -23,9 +23,9 @@ menu_background = "images/menu_background.png"
 
 
 class Frog(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, chosen_skin):
         super().__init__()
-        skin_frog = pygame.image.load("images/skin_menu/frogs/frog26.png").convert_alpha()
+        skin_frog = pygame.image.load("images/skin_menu/frogs/" + chosen_skin + ".png").convert_alpha()
         skin_frog = pygame.transform.scale(skin_frog, (100, 100))
         self.image = pygame.Surface((100, 100), pygame.SRCALPHA)
         self.rect = self.image.get_rect()

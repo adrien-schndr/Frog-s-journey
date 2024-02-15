@@ -1,11 +1,11 @@
 from constantes import *
 
 
-pygame.init()
-clock = pygame.time.Clock()
+def creation_fenetre(frog_skin, screen=screen):
 
-def creation_fenetre():
-    player = Frog()
+    pygame.init()
+    clock = pygame.time.Clock()
+    player = Frog(frog_skin)
 
     # Chargement objets
     rondin_bois_1 = Obstacle(0, 200, 200, 100, wooden_log_textures, 7.5)
@@ -17,11 +17,9 @@ def creation_fenetre():
     win_sword = Obstacle(910, 900, 100, 180, "win_sword", 0)
     obsctacle_group = pygame.sprite.Group(rondin_bois_1, caillou, rondin_bois_2, rondin_bois_2_1, rondin_bois_3, rondin_bois_3_1, win_sword)
 
-
     # Chargement du background
     background_png = pygame.image.load("images/lvl_1_bg.png").convert_alpha()
     scroll = 0
-
 
     running = True
     while running:
@@ -44,6 +42,7 @@ def creation_fenetre():
                 running = False
 
 
-creation_fenetre()
+creation_fenetre("frog27")
+
 
 pygame.quit()
