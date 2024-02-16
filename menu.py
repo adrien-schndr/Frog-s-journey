@@ -28,7 +28,7 @@ def creation_fenetre():
                     last_unlocked_lvl = 0
                     import story_1
                     running = False
+    pygame.quit()
 
 
 creation_fenetre()
-pygame.quit()

@@ -43,3 +43,23 @@ et de notre avenir."
 LAYTON: "Continuez votre quête avec courage et persévérance, voyageur ribbit. Puissent ces épées vous guider vers la 
 victoire et l'accomplissement de votre destinée ribbit."
 """
+
+
+# STORY 4 --> fin du cinquième niveau
+"""
+LAYTON: Félicitations, voyageur, pour votre avancée dans cette quête *ribbit*. Je remarque que le 
+fardeau que vous portez semble s'alourdir de plus en plus, signe que vous avez accompli 
+des progrès considérables.
+
+LAYTON: Cependant, le temps est un allié précieux que nous ne pouvons nous permettre de gaspiller. 
+Chaque moment compte dans cette entreprise cruciale *ribbit*. Je vous prie donc d'accélérer 
+le pas dans votre exploration des niveaux à venir.
+
+LAYTON: Je suis contraint de reprendre mes obligations rapidement, mais je vous encourage à maintenir 
+votre élan et votre détermination. Que rien ne vous arrête dans votre quête des épées 
+légendaires *ribbit*.
+
+LAYTON: Poursuivez votre chemin avec vigueur, voyageur. Que votre détermination soit aussi inébranlable 
+que la force du courant. Bonne chance, et que les étoiles vous guident vers la 
+victoire *ribbit*.
+"""

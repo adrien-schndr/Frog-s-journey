@@ -33,21 +33,29 @@ class Frog(pygame.sprite.Sprite):
         self.image.blit(skin_frog, (self.rect.x, self.rect.y))
         self.rect.x = 910
 
-    def move(self, event):
+    def move(self, event, direction=""):
         vitesse = 100
 
-        if event.type == KEYDOWN and event.key == K_LEFT:
+        if (event.type == KEYDOWN and event.key == K_LEFT) or direction == "left":
+            direction = "left"
             if 0 <= self.rect.x - vitesse <= window_length - 100:
                 self.rect.x -= vitesse
-        if event.type == KEYDOWN and event.key == K_RIGHT:
+                return direction
+        if (event.type == KEYDOWN and event.key == K_RIGHT) or direction == "right":
+            direction = "right"
             if 0 <= self.rect.x + vitesse <= window_length - 100:
                 self.rect.x += vitesse
-        if event.type == KEYDOWN and event.key == K_UP:
+                return direction
+        if (event.type == KEYDOWN and event.key == K_UP) or direction == "up":
+            direction = "up"
             if 0 <= self.rect.y - vitesse <= window_height - 100:
                 self.rect.y -= vitesse
-        if event.type == KEYDOWN and event.key == K_DOWN:
+                return direction
+        if (event.type == KEYDOWN and event.key == K_DOWN) or direction == "down":
+            direction = "down"
             if 0 <= self.rect.y + vitesse <= window_height - 100:
                 self.rect.y += vitesse
+                return direction
 
 
 class Obstacle(pygame.sprite.Sprite):
