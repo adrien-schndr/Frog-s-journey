@@ -37,7 +37,7 @@ texts = [
 ]
 
 
-def creation_fenetre():
+def story_final():
 
     # Charger l'image de fond
     menu_background = pygame.image.load(fond).convert()
@@ -72,6 +72,3 @@ def creation_fenetre():
         running = False
         endgame_message()
     pygame.quit()
-
-
-creation_fenetre()

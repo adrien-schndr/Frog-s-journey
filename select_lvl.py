@@ -51,4 +51,11 @@ def select_level():
                     level_2()
                     running = False
 
+                # ENDGAME
+                if 158 < clic_x < 265 and 165 < clic_y < 303:
+                    from story_final import story_final
+                    story_final()
+                    running = False
+
+
     pygame.quit()
