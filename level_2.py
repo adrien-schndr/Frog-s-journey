@@ -1,7 +1,11 @@
 from constantes import *
 
+with open('save.txt') as load_file:
+    data = json.load(load_file)
+frog_skin = data['frog_skin']
 
-def creation_fenetre(frog_skin, screen=screen):
+
+def creation_fenetre():
     start = False
 
     pygame.init()
@@ -92,7 +96,7 @@ def creation_fenetre(frog_skin, screen=screen):
                         player.rect.y -= 100
 
 
-creation_fenetre("frog27")
+creation_fenetre()
 
 
 pygame.quit()

@@ -1,10 +1,10 @@
 import pygame
+import json
 from pygame.locals import *
 import pygame.freetype
 
 pygame.init()
 
-last_unlocked_lvl = 1
 
 # Fenêtre
 window_length = 1920

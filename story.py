@@ -1,6 +1,5 @@
 # STORY 1 --> introduction
-
-"""LAYTON : Ah voyageur intrépide, *ribbit* bienvenue dans ces contrées sylvestres. Je suis Layton, Chef de la Guilde,
+""" LAYTON : Ah voyageur intrépide, *ribbit* bienvenue dans ces contrées sylvestres. Je suis Layton, Chef de la Guilde,
 gardien de ces marais ancestraux. J’entrevois dans vos yeux une lueur de détermination et de bravoure *ribbit*. Je vous
 confie une quête d’une importance capitale, même si vous ne l’avez peut être pas encore souhaitée. Vous êtes désigné
 pour récupérer les dix épées légendaires, symbole de pouvoir et de savoir ancien. Je vous servirais de guide n’ayez
@@ -26,7 +25,7 @@ LAYTON : "Une fois que vous aurez atteint l'épée, votre aventure ne fera que c
 d'abord surmonter ce premier défi avec succès. Allez, brave voyageur, que la chance soit avec vous."""
 
 
-### STORY 3 --> fin premier niveau
+# STORY 3 --> fin premier niveau
 """
 LAYTON: "Bravo, voyageur ! Vous avez franchi avec succès les épreuves de ce premier niveau. Votre agilité et votre 
 détermination sont remarquables ribbit. Continuez ainsi sur cette voie, et vous accomplirez des exploits encore plus grands."

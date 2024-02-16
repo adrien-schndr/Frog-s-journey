@@ -1,7 +1,11 @@
 from constantes import *
 
+with open('save.txt') as load_file:
+    data = json.load(load_file)
+frog_skin = data['frog_skin']
 
-def creation_fenetre(frog_skin, screen=screen):
+
+def creation_fenetre():
 
     pygame.init()
     clock = pygame.time.Clock()
@@ -27,9 +31,11 @@ def creation_fenetre(frog_skin, screen=screen):
         Obstacle(1700, 300, 200, 200, "tiles/tree_bob", 0),
     ]
 
+    ending_sword = Obstacle(910, 900, 100, 180, "win_sword", 0)
+
     enemies_group = pygame.sprite.Group(enemies)
     physical_group = pygame.sprite.Group(physical_elements)
-
+    ending_sword = pygame.sprite.Group(ending_sword)
     # Chargement du background
     background_png = pygame.image.load("images/lvl_1_bg.png").convert_alpha()
     scroll = 0
@@ -39,6 +45,7 @@ def creation_fenetre(frog_skin, screen=screen):
         # Rafraichissement fen^tre
         screen.blit(background_png, (0, 0))
         pygame.sprite.Group(player).draw(screen)
+        ending_sword.draw(screen)
         enemies_group.draw(screen)
         physical_group.draw(screen)
         pygame.display.update()
@@ -55,9 +62,7 @@ def creation_fenetre(frog_skin, screen=screen):
                 running = False
             if event.type == KEYDOWN:
                 last_movement = player.move(event)
-                print(last_movement)
                 if pygame.sprite.spritecollide(player, physical_group, False):
-                    print("touché")
                     if last_movement == "left":
                         player.rect.x += 100
                     if last_movement == "right":
@@ -67,8 +72,12 @@ def creation_fenetre(frog_skin, screen=screen):
                     if last_movement == "down":
                         player.rect.y -= 100
 
+        if pygame.sprite.spritecollide(player, ending_sword, False):
+            running = False
+            import story_3
 
-creation_fenetre("frog27")
+
+creation_fenetre()
 
 
 pygame.quit()

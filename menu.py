@@ -1,6 +1,9 @@
 from constantes import *
 pygame.init()
 
+with open('save.txt') as load_file:
+    data = json.load(load_file)
+
 # Constantes
 menu = "images/menu_background.png"
 
@@ -21,11 +24,16 @@ def creation_fenetre():
                 # Récupérer les coordonnées du clic
                 clic_x, clic_y = event.pos
                 if 735 < clic_x < 1241 and 517 < clic_y < 773:
-                    last_unlocked_lvl = -1
+                    data['last_unlocked_lvl'] = -1
+                    with open('save.txt', 'w') as store_data:
+                        json.dump(data, store_data)
                     import select_lvl
                     running = False
                 if 682 < clic_x < 1292 and 806 < clic_y < 1028:
-                    last_unlocked_lvl = 0
+                    data['last_unlocked_lvl'] = 1
+                    with open('save.txt', 'w') as store_data:
+                        json.dump(data, store_data)
+                    last_unlocked_lvl = 1
                     import story_1
                     running = False
     pygame.quit()

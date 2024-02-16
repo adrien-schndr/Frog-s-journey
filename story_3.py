@@ -70,6 +70,8 @@ def creation_fenetre():
                 if 1313 < clic_x < 1366 and 828 < clic_y < 941:
                     running = False
                     import select_lvl
-    pygame.quit()
+
 
 creation_fenetre()
+
+pygame.quit()

@@ -5,6 +5,10 @@ pygame.init()
 menu = "images/level_selection_bg.png"
 lock_positions = [(582, 805), (582, 801), (747, 563), (1123, 511), (1122, 360), (1485, 243), (1296, 97), (856, 97), (525, 137), (221, 248)]
 
+with open('save.txt') as load_file:
+    data = json.load(load_file)
+last_unlocked_lvl = data['last_unlocked_lvl']
+
 
 def creation_fenetre():
     menu_background = pygame.image.load(menu).convert()
@@ -13,8 +17,9 @@ def creation_fenetre():
 
     lock_texture = pygame.image.load("images/lock.png").convert_alpha()
     lock_texture = pygame.transform.scale(lock_texture, (25, 40))
-    for niveau in range(last_unlocked_lvl, len(lock_positions)):
-        screen.blit(lock_texture, lock_positions[niveau])
+    if last_unlocked_lvl != -1:
+        for niveau in range(last_unlocked_lvl, len(lock_positions)):
+            screen.blit(lock_texture, lock_positions[niveau])
 
     pygame.display.flip()
 

@@ -1,14 +1,24 @@
 from constantes import *
+
+data = {
+    'frog_skin': "frog26",
+    'last_unlocked_lvl': 1
+}
+
+try:
+    # the file already exists
+    with open('save.txt') as load_file:
+        data = json.load(load_file)
+except:
+    # create the file and store initial values
+    with open('save.txt', 'w') as store_file:
+        json.dump(data, store_file)
+
 clock = pygame.time.Clock()
 
-
+frog_skin = "frog26"
 menu_skin = "images/skin_menu/skin_background.png"
 taille_skin = 100
-frog_skin = "frog26"
-
-window_length = 1920
-window_height = 1080
-screen = pygame.display.set_mode((window_length, window_height), pygame.SCALED | pygame.FULLSCREEN)
 
 skins = []
 for image in range(30):
@@ -50,10 +60,8 @@ def creation_fenetre():
                 running = False  # Quitter la boucle principale si l'utilisateur ferme la fenêtre
                 pygame.quit()
             if event.type == KEYDOWN and event.key == K_RETURN:  # Quitter la boucle principale si l'utilisateur ferme la fenêtre
-                from level_1 import creation_fenetre as lvl_1
-                lvl_1(frog_skin, screen)
-
                 running = False  # Quitter la boucle principale si l'utilisateur ferme la fenêtre
+                import level_1
                 pygame.quit()
             if event.type == MOUSEBUTTONDOWN and event.button == 1:  # Vérifier le clic de souris
                 # Récupérer les coordonnées du clic
@@ -61,10 +69,13 @@ def creation_fenetre():
                 for key, value in skin_dict.items():
                     if value[0] < clic_x < value[2]:
                         if value[1] < clic_y < value[3]:
+                            data['frog_skin'] = key
+                            with open('save.txt', 'w') as store_data:
+                                json.dump(data, store_data)
                             frog_skin = key
                             grid()
                             skin = pygame.image.load("images/skin_menu/frogs/" + frog_skin + ".png")
-                            skin = pygame.transform.scale(skin, (taille_skin*2.5, taille_skin*2.5))
+                            skin = pygame.transform.scale(skin, (taille_skin * 2.5, taille_skin * 2.5))
                             screen.blit(skin, (1000, 500))
 
     pygame.quit()
