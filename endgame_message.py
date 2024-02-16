@@ -12,7 +12,7 @@ TITLE_FONT = pygame.freetype.Font("story_font.otf", 40)
 
 texts = [
     """As darkness falls, the Frog's Journey ends in betrayal.""",
-    """Yet in the memory of courage, hope remains. """,
+    """Yet in the memory of courage, hope remains.""",
     """May the light guide our steps towards a brighter future."""
 ]
 
@@ -20,7 +20,7 @@ texts = [
 fond = "images/black.jpg"
 
 
-def creation_fenetre():
+def endgame_message():
     menu_background = pygame.image.load(fond).convert()
     menu_background = pygame.transform.scale(menu_background, (1920, 1080))
     screen.blit(menu_background, (0, 0))
@@ -47,9 +47,7 @@ def creation_fenetre():
             text_number += 1
             if text_number >= len(texts):
                 pygame.time.wait(2000)
+                from game_menu import menu
+                menu()
                 running = False
     pygame.quit()
-
-
-creation_fenetre()
-pygame.quit()

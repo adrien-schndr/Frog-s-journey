@@ -5,10 +5,10 @@ with open('save.txt') as load_file:
     data = json.load(load_file)
 
 # Constantes
-menu = "images/menu_background.png"
 
 
-def creation_fenetre():
+def menu():
+    menu = "images/menu_background.png"
     menu_background = pygame.image.load(menu).convert()
     menu_background = pygame.transform.scale(menu_background, (1920, 1080))
     screen.blit(menu_background, (0, 0))
@@ -38,7 +38,3 @@ def creation_fenetre():
                     story_1()
                     running = False
     pygame.quit()
-
-
-creation_fenetre()
-pygame.quit()

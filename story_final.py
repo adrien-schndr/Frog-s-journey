@@ -1,4 +1,3 @@
-
 import pygame.freetype
 from constantes import *
 
@@ -8,24 +7,19 @@ clock = pygame.time.Clock()
 
 # Définition des constantes
 fond = "images/final.png"
-TEXT_COLOR = (0, 0, 0)
-TEXT_START_POSITION = (350, 50)
-TEXT_LINE_SPACING = 20  # Espacement vertical entre chaque ligne de texte
-
-# Charger les polices
-GAME_FONT = pygame.freetype.Font("story_font.otf", 32)
+font = pygame.font.Font("story_font.otf", 34)
 
 # Textes à afficher
 texts = [
     """Dans la tranquillité des marais, le voyageur, après d'innombrables épreuves,""",
-    """atteignit enfin son objectif ultime. Il rassembla les dix épées légendaires, leur """,
-    """lueur éclatant dans la pénombre de la nuit. Layton, qui l'avait guidé à travers """,
+    """atteignit enfin son objectif ultime. Il rassembla les dix épées légendaires, leur""",
+    """lueur éclatant dans la pénombre de la nuit. Layton, qui l'avait guidé à travers""",
     """chaque défi, observait avec satisfaction cet accomplissement.""",
     """ """,
     """ """,
     """Mais alors que le voyageur, épuisé mais triomphant, se retournait pour partager son""",
     """succès avec Layton, il fut frappé  par une trahison inattendue. Le regard de Layton avait""",
-    """changé, devenant froid et impitoyable. Sans un mot, Layton dégaina une lame, l'une des dix """,
+    """changé, devenant froid et impitoyable. Sans un mot, Layton dégaina une lame, l'une des dix""",
     """épées autrefois convoitées, et l'abattit avec une précision mortelle sur le voyageur.""",
     """ """,
     """Le bruit du métal contre la chair déchira la quiétude de la nuit, alors que le voyageur tombait""",
@@ -52,54 +46,31 @@ def creation_fenetre():
 
     pygame.display.flip()
 
-    line_number = 0
-    longueur = 0
     running = True
 
     while running:
-        screen.blit(menu_background, (0, 0))
-        clock.tick(20)
-        for event in pygame.event.get():
-            if event.type == KEYDOWN and event.key == K_ESCAPE or event.type == pygame.QUIT:
-                running = False
-        if line_number == 0:
-            text_surface0, rect = GAME_FONT.render(texts[line_number][0:longueur], (0, 0, 0))
-            screen.blit(text_surface0, (150, 725))
-            longueur += 1
-        pygame.display.flip()
-
-
-    # while running:
-    #     screen.blit(menu_background, (0, 0))
-    #     clock.tick(20)
-    #
-    #     for event in pygame.event.get():
-    #         if event.type == KEYDOWN and event.key == K_ESCAPE or event.type == pygame.QUIT:
-    #             running = False
-    #
-    #     # Affichage du texte
-    #     y_position = TEXT_START_POSITION[1]  # Position verticale du texte
-    #     for i in range(text_number + 1):
-    #         text_surface, rect = GAME_FONT.render(texts[i], TEXT_COLOR)
-    #         text_width, text_height = rect.size
-    #         x_position = (window_length - text_width) // 2  # Calculer la position horizontale pour centrer le texte
-    #         screen.blit(text_surface, (x_position, y_position))
-    #         y_position += text_height + TEXT_LINE_SPACING  # Mettre à jour la position verticale pour le prochain texte
-    #
-    #     pygame.display.flip()
-    #
-    #     pygame.time.wait(500)
-    #     text_number += 1
-    #
-    #     for ligne in texts:
-    #         for lettre in ligne:
-    #
-    #
-    #     if text_number >= len(texts):
-    #         pygame.time.wait(2000)
-    #         running = False
-    #         import endgame_message
-
+        hauteur_texte = window_height // 2 - len(texts) * font.get_height() // 2
+        for texte in texts:
+            texte_surface = font.render(texte, True, (0, 0, 0))
+            x_position = window_length // 2 - texte_surface.get_width() // 2
+            for lettre in texte:
+                lettre_surface = font.render(lettre, True, (0, 0, 0))
+                screen.blit(lettre_surface, (x_position, hauteur_texte))
+                pygame.display.flip()
+                pygame.time.wait(25)
+                x_position += lettre_surface.get_width()
+                for event in pygame.event.get():
+                    if (event.type == KEYDOWN and event.key == K_ESCAPE) or event.type == pygame.QUIT:
+                        running = False
+                        pygame.quit()
+                    if event.type == pygame.QUIT:
+                        running = False
+                        pygame.quit()
+            hauteur_texte += font.get_height()
+        pygame.time.wait(3000)
+        from endgame_message import endgame_message
+        running = False
+        endgame_message()
     pygame.quit()
 
 
