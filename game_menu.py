@@ -1,13 +1,16 @@
 from constantes import *
 pygame.init()
 
-with open('save.txt') as load_file:
-    data = json.load(load_file)
+
+
 
 # Constantes
 
 
 def menu():
+    with open('save.txt') as load_file:
+        data = json.load(load_file)
+    print("Menu : ", data)
     menu = "images/menu_background.png"
     menu_background = pygame.image.load(menu).convert()
     menu_background = pygame.transform.scale(menu_background, (1920, 1080))
@@ -23,6 +26,7 @@ def menu():
             if event.type == MOUSEBUTTONDOWN and event.button == 1:  # Vérifier le clic de souris
                 # Récupérer les coordonnées du clic
                 clic_x, clic_y = event.pos
+                print(clic_x, clic_y)
                 if 735 < clic_x < 1241 and 517 < clic_y < 773:
                     data['last_unlocked_lvl'] = -1
                     with open('save.txt', 'w') as store_data:
@@ -36,5 +40,9 @@ def menu():
                         json.dump(data, store_data)
                     from story_1 import story_1
                     story_1()
+                    running = False
+                if 1727 < clic_x < 1920 and 0 < clic_y < 132:
+                    from skin_select import skin_select
+                    skin_select()
                     running = False
     pygame.quit()

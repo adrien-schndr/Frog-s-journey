@@ -9,6 +9,7 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
+
 # Fenêtre
 window_length = 1920
 window_height = 1080
