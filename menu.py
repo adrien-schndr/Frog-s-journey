@@ -27,16 +27,18 @@ def creation_fenetre():
                     data['last_unlocked_lvl'] = -1
                     with open('save.txt', 'w') as store_data:
                         json.dump(data, store_data)
-                    import select_lvl
+                    from select_lvl import select_level
+                    select_level()
                     running = False
                 if 682 < clic_x < 1292 and 806 < clic_y < 1028:
                     data['last_unlocked_lvl'] = 1
                     with open('save.txt', 'w') as store_data:
                         json.dump(data, store_data)
-                    last_unlocked_lvl = 1
-                    import story_1
+                    from story_1 import story_1
+                    story_1()
                     running = False
     pygame.quit()
 
 
 creation_fenetre()
+pygame.quit()

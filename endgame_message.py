@@ -47,7 +47,6 @@ def creation_fenetre():
             text_number += 1
             if text_number >= len(texts):
                 pygame.time.wait(2000)
-                import menu
                 running = False
     pygame.quit()
 

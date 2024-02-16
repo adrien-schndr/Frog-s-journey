@@ -1,10 +1,13 @@
 import pygame
+# noinspection PyUnresolvedReferences
 import json
 from pygame.locals import *
 import pygame.freetype
 
 pygame.init()
 
+
+clock = pygame.time.Clock()
 
 # Fenêtre
 window_length = 1920

@@ -61,7 +61,7 @@ def creation_fenetre():
                 pygame.quit()
             if event.type == KEYDOWN and event.key == K_RETURN:  # Quitter la boucle principale si l'utilisateur ferme la fenêtre
                 running = False  # Quitter la boucle principale si l'utilisateur ferme la fenêtre
-                import level_1
+                import select_lvl
                 pygame.quit()
             if event.type == MOUSEBUTTONDOWN and event.button == 1:  # Vérifier le clic de souris
                 # Récupérer les coordonnées du clic

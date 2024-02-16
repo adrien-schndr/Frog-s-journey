@@ -29,7 +29,7 @@ texts = [
 menu = "images/story_screen_2.png"
 
 
-def creation_fenetre():
+def story_3():
     menu_background = pygame.image.load(menu).convert()
     menu_background = pygame.transform.scale(menu_background, (1920, 1080))
     screen.blit(menu_background, (0, 0))
@@ -69,9 +69,6 @@ def creation_fenetre():
                 print(clic_x, clic_y)
                 if 1313 < clic_x < 1366 and 828 < clic_y < 941:
                     running = False
-                    import select_lvl
-
-
-creation_fenetre()
-
-pygame.quit()
+                    from select_lvl import select_level
+                    select_level()
+    pygame.quit()

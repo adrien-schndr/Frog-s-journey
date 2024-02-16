@@ -23,7 +23,7 @@ texts = [
 menu = "images/story_screen.png"
 
 
-def creation_fenetre():
+def story_1():
     menu_background = pygame.image.load(menu).convert()
     menu_background = pygame.transform.scale(menu_background, (1920, 1080))
     screen.blit(menu_background, (0, 0))
@@ -62,8 +62,6 @@ def creation_fenetre():
                 clic_x, clic_y = event.pos
                 if 1349 < clic_x < 1407 and 854 < clic_y < 959:
                     running = False
-                    import story_2
+                    from story_2 import story_2
+                    story_2()
     pygame.quit()
-
-
-creation_fenetre()

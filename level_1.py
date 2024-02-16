@@ -1,14 +1,14 @@
 from constantes import *
 
+
 with open('save.txt') as load_file:
     data = json.load(load_file)
 frog_skin = data['frog_skin']
+last_unlocked_lvl = data['last_unlocked_lvl']
 
 
-def creation_fenetre():
+def level_1():
 
-    pygame.init()
-    clock = pygame.time.Clock()
     player = Frog(frog_skin)
 
     # Chargement objets
@@ -38,7 +38,6 @@ def creation_fenetre():
     ending_sword = pygame.sprite.Group(ending_sword)
     # Chargement du background
     background_png = pygame.image.load("images/lvl_1_bg.png").convert_alpha()
-    scroll = 0
 
     running = True
     while running:
@@ -74,10 +73,13 @@ def creation_fenetre():
 
         if pygame.sprite.spritecollide(player, ending_sword, False):
             running = False
-            import story_3
-
-
-creation_fenetre()
-
-
-pygame.quit()
+            if last_unlocked_lvl == -1:
+                from select_lvl import select_level
+                select_level()
+            else:
+                data['last_unlocked_lvl'] = 2
+                with open('save.txt', 'w') as store_data:
+                    json.dump(data, store_data)
+                from story_3 import story_3
+                story_3()
+    pygame.quit()
