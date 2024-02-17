@@ -22,6 +22,12 @@ for image in range(0, 18):
     texture = pygame.transform.scale(texture, (100, 100))
     wooden_log_textures.append(texture)
 
+reverse_wooden_log_textures = []
+for image in range(0, 18):
+    texture = pygame.image.load("images/wood/wood_log_" + str(17-image) + ".png")
+    texture = pygame.transform.scale(texture, (100, 100))
+    reverse_wooden_log_textures.append(texture)
+
 rabbit_textures = []
 for image in range(0, 16):
     texture = pygame.image.load("images/rabbit/rabbit_" + str(image) + ".png")
@@ -40,7 +46,7 @@ class Frog(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (50, 50)
         self.image.blit(skin_frog, (self.rect.x, self.rect.y))
-        self.rect.x = 910
+        self.rect.x = 900
 
     def move(self, event, direction=""):
         vitesse = 100
@@ -93,8 +99,10 @@ class Obstacle(pygame.sprite.Sprite):
 
     def update(self):
         self.rect.x += self.speed
-        if self.rect.x >= window_length:
+        if self.rect.x >= window_length and self.speed > 0:
             self.rect.x = -self.dimensions[0]
+        if self.rect.x < 0-self.dimensions[0] and self.speed < 0:
+            self.rect.x = 1920
         if self.isAnimated:
             self.index += 1
             if self.index >= len(self.skin):

@@ -99,7 +99,7 @@ def level_2():
         Obstacle(1200, 600, 100, 100, "tiles/bush", 7),
 
         Obstacle(300, 1000, 100, 100, "rock", 7),
-        Obstacle(1200, 600, 200, 200, "tiles/tree_bob", 7),
+        Obstacle(1200, 1600, 200, 200, "tiles/tree_bob", 7),
     ]
 
     ending_sword = Obstacle(910, 1900, 100, 180, "win_sword", 0)
