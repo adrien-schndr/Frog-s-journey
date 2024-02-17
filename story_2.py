@@ -20,8 +20,8 @@ texts = [
     """Attention aux obstacles qui jonchent votre chemin. Évitez-les avec agilité pour ne""",
     """pas compromettre votre progression. Seuls les plus habiles et les plus attentifs""",
     """réussiront à atteindre l'épée convoitée.""",
-    """N'oubliez pas que votre quête est chronométrée. Le temps file comme le vent, et chaque""",
-    """seconde compte. Soyez rapide, mais ne négligez pas la prudence.""",
+    """Faites attention aux courants, ne leur accordez pas votre confiance et sortez de """,
+    """l'eau au plus vite. Soyez rapide, mais ne négligez pas la prudence.""",
     """Une fois que vous aurez atteint l'épée, votre aventure ne fera que commencer. Mais""",
     """pour cela, vous devez d'abord surmonter ce premier défi avec succès. Allez, brave""",
     """voyageur, que la chance soit avec vous."""

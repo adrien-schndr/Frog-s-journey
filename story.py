@@ -18,7 +18,7 @@ presse, donc ne tardez pas trop. Chaque seconde écoulée vous rapproche de l'é
 LAYTON : "Attention aux obstacles qui jonchent votre chemin. Évitez-les avec agilité pour ne pas compromettre votre 
 progression. Seuls les plus habiles et les plus attentifs réussiront à atteindre l'épée convoitée."
 
-LAYTON : "N'oubliez pas que votre quête est chronométrée. Le temps file comme le vent, et chaque seconde compte. 
+LAYTON : "Faites attention aux courants, ne leur accordez pas votre confiance et sortez de l'eau au plus vite. 
 Soyez rapide, mais ne négligez pas la prudence."
 
 LAYTON : "Une fois que vous aurez atteint l'épée, votre aventure ne fera que commencer. Mais pour cela, vous devez 
