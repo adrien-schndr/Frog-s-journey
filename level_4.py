@@ -119,6 +119,13 @@ def level_4():
                 data['last_unlocked_lvl'] = 5
                 with open('save.txt', 'w') as store_data:
                     json.dump(data, store_data)
+
+            win_screen = pygame.image.load("images/win_screen.Png")
+            win_screen = pygame.transform.scale(win_screen, (1920, 1080))
+            screen.blit(win_screen, (0, 0))
+            pygame.display.update()
+            pygame.time.wait(3000)
+
             from select_lvl import select_level
             select_level()
     pygame.quit()

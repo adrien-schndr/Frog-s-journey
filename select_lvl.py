@@ -63,11 +63,9 @@ def select_level():
                     level_4()
                     running = False
 
-                # ENDGAME
+                # NIVEAU 10
                 if 158 < clic_x < 265 and 165 < clic_y < 303:
-                    from story_final import story_final
-                    story_final()
+                    from level_10 import level_10
+                    level_10()
                     running = False
-
-
     pygame.quit()
