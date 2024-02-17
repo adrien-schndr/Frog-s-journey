@@ -41,6 +41,17 @@ def level_3():
         pygame.display.update()
         clock.tick(50)
 
+        if 0 <= player.rect.y < 200:
+            player.rect.x = round(player.rect.x, -2)
+        if 200 <= player.rect.y < 500:
+            player.rect.x += 10
+        if 500 <= player.rect.y < 700:
+            player.rect.x = round(player.rect.x, -2)
+        if 700 <= player.rect.y < 900:
+            player.rect.x += 10
+        if 900 <= player.rect.y < 1080:
+            player.rect.x = round(player.rect.x, -2)
+
         for event in pygame.event.get():
             if event.type == KEYDOWN and not start:
                 start = True
@@ -60,7 +71,7 @@ def level_3():
                         player.rect.y -= 100
 
         # Si en collision avec un obstacle                     OU               Si sors de l'écran
-        if pygame.sprite.spritecollide(player, "", False):
+        if player.rect.x >= 1920:
             player.rect.x, player.rect.y = 910, 0
 
         if pygame.sprite.spritecollide(player, ending_sword, False):
