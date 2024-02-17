@@ -203,5 +203,3 @@ def level_9():
             from select_lvl import select_level
             select_level()
     pygame.quit()
-
-level_9()

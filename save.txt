@@ -1,1 +1,1 @@
-{"frog_skin": "frog7", "last_unlocked_lvl": 7}
+{"frog_skin": "frog19", "last_unlocked_lvl": -1}

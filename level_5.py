@@ -142,7 +142,7 @@ def level_5():
                 from select_lvl import select_level
                 select_level()
             else:
-                data['last_unlocked_lvl'] = 2
+                data['last_unlocked_lvl'] = 6
                 with open('save.txt', 'w') as store_data:
                     json.dump(data, store_data)
 

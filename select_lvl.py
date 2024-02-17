@@ -63,6 +63,36 @@ def select_level():
                     level_4()
                     running = False
 
+                # NIVEAU 5
+                if (1063 < clic_x < 1164 and 278 < clic_y < 415) and (last_unlocked_lvl >= 5 or last_unlocked_lvl == -1):
+                    from level_5 import level_5
+                    level_5()
+                    running = False
+
+                # NIVEAU 6
+                if (1420 < clic_x < 1527 and 169 < clic_y < 303) and (last_unlocked_lvl >= 6 or last_unlocked_lvl == -1):
+                    from level_6 import level_6
+                    level_6()
+                    running = False
+
+                # NIVEAU 7
+                if (1234 < clic_x < 1337 and 15 < clic_y < 158) and (last_unlocked_lvl >= 7 or last_unlocked_lvl == -1):
+                    from level_7 import level_7
+                    level_7()
+                    running = False
+
+                # NIVEAU 8
+                if (792 < clic_x < 899 and 17 < clic_y < 156) and (last_unlocked_lvl >= 7 or last_unlocked_lvl == -1):
+                    from level_8 import level_8
+                    level_8()
+                    running = False
+
+                # NIVEAU 9
+                if (466 < clic_x < 566 and 59 < clic_y < 200) and (last_unlocked_lvl >= 9 or last_unlocked_lvl == -1):
+                    from level_9 import level_9
+                    level_9()
+                    running = False
+
                 # NIVEAU 10
                 if 158 < clic_x < 265 and 165 < clic_y < 303:
                     from level_10 import level_10
