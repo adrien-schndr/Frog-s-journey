@@ -24,8 +24,43 @@ def level_2():
         # Obstacle(1500, 200, 200, 100, wooden_log_textures, 9),
         Obstacle(1800, 200, 200, 100, wooden_log_textures, 9),
         # Ligne 2
-        Obstacle(100, 300, 200, 100, wooden_log_textures, 11),
-        Obstacle(500, 300, 200, 100, wooden_log_textures, 11)
+        Obstacle(100, 300, 200, 100, wooden_log_textures, 15),
+        Obstacle(550, 300, 200, 100, wooden_log_textures, 15),
+        Obstacle(1000, 300, 200, 100, wooden_log_textures, 15),
+        Obstacle(1550, 300, 200, 100, wooden_log_textures, 15),
+        # Ligne 3
+        Obstacle(250, 400, 200, 100, wooden_log_textures, 13),
+        Obstacle(500, 400, 200, 100, wooden_log_textures, 13),
+        Obstacle(750, 400, 200, 100, wooden_log_textures, 13),
+        Obstacle(100, 400, 200, 100, wooden_log_textures, 13),
+        # Ligne 4
+        Obstacle(100, 500, 200, 100, wooden_log_textures, 16),
+        Obstacle(600, 500, 200, 100, wooden_log_textures, 16),
+        Obstacle(1200, 500, 200, 100, wooden_log_textures, 16),
+
+        # Ligne 6
+        Obstacle(50, 700, 200, 100, rabbit_textures, 10),
+        Obstacle(150, 700, 200, 100, rabbit_textures, 10),
+        Obstacle(250, 700, 200, 100, rabbit_textures, 10),
+        Obstacle(350, 700, 200, 100, rabbit_textures, 10),
+        Obstacle(450, 700, 200, 100, rabbit_textures, 10),
+        Obstacle(550, 700, 200, 100, rabbit_textures, 10),
+        # Ligne 7
+        Obstacle(100, 800, 200, 100, rabbit_textures, 15),
+        Obstacle(200, 800, 200, 100, rabbit_textures, 15),
+        Obstacle(300, 800, 200, 100, rabbit_textures, 15),
+        Obstacle(400, 800, 200, 100, rabbit_textures, 15),
+        Obstacle(500, 800, 200, 100, rabbit_textures, 15),
+        Obstacle(600, 800, 200, 100, rabbit_textures, 15),
+        # Ligne 7
+        Obstacle(500, 900, 200, 100, rabbit_textures, 12),
+        Obstacle(600, 900, 200, 100, rabbit_textures, 12),
+        Obstacle(700, 900, 200, 100, rabbit_textures, 12),
+        Obstacle(800, 900, 200, 100, rabbit_textures, 12),
+        Obstacle(900, 900, 200, 100, rabbit_textures, 12),
+        Obstacle(1000, 900, 200, 100, rabbit_textures, 12),
+
+
 
     ]
 
@@ -33,7 +68,7 @@ def level_2():
         Obstacle(000, 600, 100, 100, "tiles/bush", 7),
     ]
 
-    ending_sword = Obstacle(910, 900, 100, 180, "win_sword", 0)
+    ending_sword = Obstacle(910, 1900, 100, 180, "win_sword", 0)
 
     enemies_group = pygame.sprite.Group(enemies)
     physical_group = pygame.sprite.Group(physical_elements)
@@ -51,11 +86,11 @@ def level_2():
         ending_sword.draw(screen)
         physical_group.draw(screen)
         pygame.display.update()
-        clock.tick(60)
+        clock.tick(50)
         enemies_group.update()
 
         # Défilmenet
-        if start and i >= -1000:
+        if start and i > -1000:
             screen.blit(background_png, (0, i))
             for enemy in enemies_group:
                 enemy.rect.y -= 1
@@ -65,7 +100,7 @@ def level_2():
                 sword.rect.y -= 1
             player.rect.y -= 1
             i -= 1
-        elif start and i < -1000:
+        elif start and i <= -1000:
             screen.blit(background_png, (0, i))
         else:
             screen.blit(background_png, (0, 0))
@@ -99,6 +134,8 @@ def level_2():
                 enemy.rect.x, enemy.rect.y = enemy.init_position[0], enemy.init_position[1]
             for physical_object in physical_group:
                 physical_object.rect.x, physical_object.rect.y = physical_object.init_position[0], physical_object.init_position[1]
+            for win_sword in ending_sword:
+                win_sword.rect.x, win_sword.rect.y = win_sword.init_position[0], win_sword.init_position[1]
 
         if pygame.sprite.spritecollide(player, ending_sword, False):
             running = False
@@ -109,3 +146,6 @@ def level_2():
             from select_lvl import select_level
             select_level()
     pygame.quit()
+
+level_2()
+pygame.quit()

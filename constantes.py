@@ -11,8 +11,7 @@ clock = pygame.time.Clock()
 
 
 # Fenêtre
-window_length = 1920
-window_height = 1080
+window_length, window_height = 1920, 1080
 screen = pygame.display.set_mode((window_length, window_height), pygame.SCALED | pygame.FULLSCREEN)
 
 
@@ -22,6 +21,12 @@ for image in range(0, 18):
     texture = pygame.image.load("images/wood/wood_log_" + str(image) + ".png")
     texture = pygame.transform.scale(texture, (100, 100))
     wooden_log_textures.append(texture)
+
+rabbit_textures = []
+for image in range(0, 16):
+    texture = pygame.image.load("images/rabbit/rabbit_" + str(image) + ".png")
+    texture = pygame.transform.scale(texture, (100, 100))
+    rabbit_textures.append(texture)
 
 menu_background = "images/menu_background.png"
 
