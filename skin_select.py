@@ -61,6 +61,11 @@ def skin_select():
             if event.type == MOUSEBUTTONDOWN and event.button == 1:  # Vérifier le clic de souris
                 # Récupérer les coordonnées du clic
                 clic_x, clic_y = event.pos
+                print (clic_x, clic_y)
+                if 1008 < clic_x < 1263 and 977 < clic_y < 1053:
+                    from game_menu import menu
+                    menu()
+                    running = False
                 for key, value in skin_dict.items():
                     if value[0] < clic_x < value[2]:
                         if value[1] < clic_y < value[3]:
@@ -72,6 +77,6 @@ def skin_select():
                             grid()
                             skin = pygame.image.load("images/skin_menu/frogs/" + frog_skin + ".png")
                             skin = pygame.transform.scale(skin, (taille_skin * 2.5, taille_skin * 2.5))
-                            screen.blit(skin, (1000, 500))
+                            screen.blit(skin, (1250, 500))
 
     pygame.quit()

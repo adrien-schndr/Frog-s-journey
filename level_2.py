@@ -60,12 +60,46 @@ def level_2():
         Obstacle(900, 900, 200, 100, rabbit_textures, 12),
         Obstacle(1000, 900, 200, 100, rabbit_textures, 12),
 
+        # Ligne 0
+        Obstacle(000, 1100, 200, 100, wooden_log_textures, 7),
+        # Ligne 1
+        Obstacle(000, 1200, 200, 100, wooden_log_textures, 9),
+        # Obstacle(300, 200, 200, 100, wooden_log_textures, 9),
+        Obstacle(600, 1200, 200, 100, wooden_log_textures, 9),
+        # Obstacle(900, 200, 200, 100, wooden_log_textures, 9),
+        Obstacle(1200, 1200, 200, 100, wooden_log_textures, 9),
+        # Obstacle(1500, 200, 200, 100, wooden_log_textures, 9),
+        Obstacle(1800, 1200, 200, 100, wooden_log_textures, 9),
+        # Ligne 2
+        Obstacle(100, 1300, 200, 100, wooden_log_textures, 15),
+        Obstacle(550, 1300, 200, 100, wooden_log_textures, 15),
+        Obstacle(1000, 1300, 200, 100, wooden_log_textures, 15),
+        Obstacle(1550, 1300, 200, 100, wooden_log_textures, 15),
+        # Ligne 3
+        Obstacle(250, 1400, 200, 100, wooden_log_textures, 13),
+        Obstacle(500, 1400, 200, 100, wooden_log_textures, 13),
+        Obstacle(750, 1400, 200, 100, wooden_log_textures, 13),
+        Obstacle(100, 1400, 200, 100, wooden_log_textures, 13),
+        # Ligne 4
+        Obstacle(100, 1500, 200, 100, wooden_log_textures, 16),
+        Obstacle(600, 1500, 200, 100, wooden_log_textures, 16),
+        Obstacle(1200, 1500, 200, 100, wooden_log_textures, 16),
+
+        Obstacle(000, 1800, 200, 100, wooden_log_textures, 7),
+
 
 
     ]
 
     physical_elements = [
+        Obstacle(500, 000, 100, 100, "tiles/bush", 7),
+
         Obstacle(000, 600, 100, 100, "tiles/bush", 7),
+        Obstacle(1800, 600, 100, 100, "tiles/bush", 7),
+        Obstacle(1200, 600, 100, 100, "tiles/bush", 7),
+
+        Obstacle(300, 1000, 100, 100, "rock", 7),
+        Obstacle(1200, 600, 200, 200, "tiles/tree_bob", 7),
     ]
 
     ending_sword = Obstacle(910, 1900, 100, 180, "win_sword", 0)
@@ -146,6 +180,3 @@ def level_2():
             from select_lvl import select_level
             select_level()
     pygame.quit()
-
-level_2()
-pygame.quit()

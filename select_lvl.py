@@ -51,6 +51,12 @@ def select_level():
                     level_2()
                     running = False
 
+                # NIVEAU 3
+                if (689 < clic_x < 789 and 479 < clic_y < 618) and (last_unlocked_lvl >= 3 or last_unlocked_lvl == -1):
+                    from level_3 import level_3
+                    level_3()
+                    running = False
+
                 # ENDGAME
                 if 158 < clic_x < 265 and 165 < clic_y < 303:
                     from story_final import story_final
