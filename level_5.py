@@ -151,7 +151,7 @@ def level_5():
                 screen.blit(win_screen, (0, 0))
                 pygame.display.update()
                 pygame.time.wait(3000)
-
-                from story_4 import story_4
-                story_4()
+                running = False
+                from story_full import story
+                story(4)
     pygame.quit()

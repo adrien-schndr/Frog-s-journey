@@ -38,9 +38,9 @@ def menu():
                     data['last_unlocked_lvl'] = 1
                     with open('save.txt', 'w') as store_data:
                         json.dump(data, store_data)
-                    from story_1 import story_1
-                    story_1()
                     running = False
+                    from story_full import story
+                    story(1)
                 if 1727 < clic_x < 1920 and 0 < clic_y < 132:
                     from skin_select import skin_select
                     skin_select()

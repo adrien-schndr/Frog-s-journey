@@ -94,6 +94,6 @@ def level_1():
                 pygame.display.update()
                 pygame.time.wait(3000)
 
-                from story_3 import story_3
-                story_3()
+                from story_full import story
+                story(3)
     pygame.quit()
