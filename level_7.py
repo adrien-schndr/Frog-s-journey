@@ -1,10 +1,7 @@
 from constantes import *
 
 
-with open('save.txt') as load_file:
-    data = json.load(load_file)
-frog_skin = data['frog_skin']
-last_unlocked_lvl = data['last_unlocked_lvl']
+
 
 
 def level_7():

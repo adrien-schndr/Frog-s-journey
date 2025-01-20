@@ -9,32 +9,42 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
+with open('save.txt') as load_file:
+    data = json.load(load_file)
+frog_skin = data['frog_skin']
+last_unlocked_lvl = data['last_unlocked_lvl']
 
 # Fenêtre
 window_length, window_height = 1920, 1080
 screen = pygame.display.set_mode((window_length, window_height), pygame.SCALED | pygame.FULLSCREEN)
 
 
+def textures_loader(relative_texture_path, frames = 1):
+    textures_collection = []
+    for frame in range(0, frames):
+        if frames > 1:
+            loaded_sprite = pygame.image.load(f"images/{relative_texture_path}/{str(frame)}.png")
+        else:
+            loaded_sprite = pygame.image.load(f"images/{relative_texture_path}.png")
+        loaded_sprite = pygame.transform.scale(loaded_sprite, (100, 100))
+        textures_collection.append(loaded_sprite)
+    return textures_collection
+
 # Textures
-wooden_log_textures = []
-for image in range(0, 18):
-    texture = pygame.image.load("images/wood/wood_log_" + str(image) + ".png")
-    texture = pygame.transform.scale(texture, (100, 100))
-    wooden_log_textures.append(texture)
 
-reverse_wooden_log_textures = []
-for image in range(0, 18):
-    texture = pygame.image.load("images/wood/wood_log_" + str(17-image) + ".png")
-    texture = pygame.transform.scale(texture, (100, 100))
-    reverse_wooden_log_textures.append(texture)
-
-rabbit_textures = []
-for image in range(0, 16):
-    texture = pygame.image.load("images/rabbit/rabbit_" + str(image) + ".png")
-    texture = pygame.transform.scale(texture, (100, 100))
-    rabbit_textures.append(texture)
 
 menu_background = "images/menu_background.png"
+
+
+textures_dimensions = {
+    "wooden_log": [200, 100, 18],
+    "reverse_wooden_log": [200, 100, 18],
+    "rabbit": [200, 100, 16],
+    "bush": [100, 100, 1],
+    "rock": [100, 100, 1],
+    "tree": [400, 400, 1],
+    "sword": [100, 180, 1]
+}
 
 
 class Frog(pygame.sprite.Sprite):
