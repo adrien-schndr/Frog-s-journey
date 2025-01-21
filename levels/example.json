@@ -1,10 +1,7 @@
 {
   "properties": {
-    "scroll_speed": null,
-    "next_scene": {
-      "type": null,
-      "id": null
-    }
+    "scroll_speed": 0,
+    "story_scene_next": 3
   },
   "enemies": {
     "wooden_log": [
@@ -25,6 +22,14 @@
 
     ],
     "tree": [
+
+    ]
+  },
+  "water": {
+    "full_line": [
+
+    ],
+    "partial_line": [
 
     ]
   },

@@ -2,17 +2,8 @@ from constantes import *
 pygame.init()
 
 
-
-
-# Constantes
-
-
 def menu():
-    with open('save.txt') as load_file:
-        data = json.load(load_file)
-    print("Menu : ", data)
-    menu = "images/menu_background.png"
-    menu_background = pygame.image.load(menu).convert()
+    menu_background = pygame.image.load("images/menu_background.png").convert()
     menu_background = pygame.transform.scale(menu_background, (1920, 1080))
     screen.blit(menu_background, (0, 0))
     pygame.display.flip()
@@ -39,7 +30,7 @@ def menu():
                     with open('save.txt', 'w') as store_data:
                         json.dump(data, store_data)
                     running = False
-                    from story_full import story
+                    from story.story_full import story
                     story(1)
                 if 1727 < clic_x < 1920 and 0 < clic_y < 132:
                     from skin_select import skin_select

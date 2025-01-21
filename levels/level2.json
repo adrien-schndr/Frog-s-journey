@@ -1,10 +1,6 @@
 {
   "properties": {
-    "scroll_speed": 1,
-    "next_scene": {
-      "type": null,
-      "id": null
-    }
+    "scroll_speed": 1
   },
   "enemies": {
     "wooden_log": [

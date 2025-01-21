@@ -1,0 +1,14 @@
+{
+  "properties": {
+    "scroll_speed": 3,
+    "story_scene_next": 5
+  },
+  "enemies": {
+  },
+  "obstacles": {
+  },
+  "checkpoints": {
+    "spawn": [910, 0],
+    "win": [910, 5220]
+  }
+}
