@@ -1,0 +1,40 @@
+{
+  "properties": {
+    "scroll_speed": 0,
+    "story_scene_next": 3
+  },
+  "enemies": {
+    "wooden_log": [
+
+    ],
+    "reverse_wooden_log": [
+
+    ],
+    "rabbit": [
+
+    ]
+  },
+  "obstacles": {
+    "bush": [
+
+    ],
+    "rock": [
+
+    ],
+    "tree": [
+
+    ]
+  },
+  "water": {
+    "full_line": [
+
+    ],
+    "partial_line": [
+
+    ]
+  },
+  "checkpoints": {
+    "spawn": [],
+    "win": []
+  }
+}

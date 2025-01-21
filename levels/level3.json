@@ -1,0 +1,30 @@
+{
+  "properties": {
+    "scroll_speed": 0
+  },
+  "enemies": {
+
+  },
+  "obstacles": {
+    "bush": [
+      [500, 0],
+      [0, 600], [1200, 600], [1800, 600]
+    ],
+    "rock": [
+
+    ],
+    "tree": [
+
+    ]
+  },
+  "water": {
+    "full_line": [
+      [200, 400, 10], [700, 800, 10]
+    ]
+  }
+  ,
+  "checkpoints": {
+    "spawn": [910, 0],
+    "win": [910, 900]
+  }
+}
